@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tech News</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #eee;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+
+        .news-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .article p {
+            margin: 0 0 10px;
+        }
+
+        .article p.source {
+            color: #666;
+        }
+
+        .article p.published {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            align-self: flex-end;
+        }
+
+        .article img {
+            max-width: 100%;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tech News</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Technology</a></li>
+            <li><a href="#">General</a></li>
+            <li><a href="Calculator.html">Calculator</a></li>
+            
+            <!-- You can add more categories here -->
+        </ul>
+    </nav>
+    <div class="news-container">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const articlesContainer = document.querySelector('.news-container');
+
+            fetch('https://saurav.tech/NewsAPI/top-headlines/category/general/us.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.articles.forEach(article => {
+                        const articleDiv = document.createElement('div');
+                        articleDiv.classList.add('article');
+
+                        const title = document.createElement('h2');
+                        title.textContent = article.title;
+
+                        const description = document.createElement('p');
+                        description.textContent = article.description;
+
+                        const source = document.createElement('p');
+                        source.classList.add('source');
+                        source.textContent = `Source: ${article.source.name}`;
+
+                        const publishedAt = document.createElement('p');
+                        publishedAt.classList.add('published');
+                        const publishedDate = new Date(article.publishedAt);
+                        publishedAt.textContent = `Published at: ${publishedDate.toDateString()}`;
+
+                        const articleLink = document.createElement('a');
+                        articleLink.href = article.url;
+                        articleLink.textContent = 'Read more';
+                        articleLink.target = '_blank';
+
+                        const image = document.createElement('img');
+                        image.src = article.urlToImage;
+                        image.alt = article.title;
+
+                        articleDiv.appendChild(title);
+                        articleDiv.appendChild(description);
+                        articleDiv.appendChild(source);
+                        articleDiv.appendChild(publishedAt);
+                        articleDiv.appendChild(image);
+                        articleDiv.appendChild(articleLink);
+
+                        articlesContainer.appendChild(articleDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    </script>
+</body>
+</html>
