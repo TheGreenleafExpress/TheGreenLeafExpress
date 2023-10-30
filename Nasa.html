@@ -107,11 +107,7 @@
         <img id="apod-image" src="" alt="NASA APOD">
         <p id="explanation"></p>
     </div>
-    <div class="rover-container">
-        <h2>Latest Mars Rover Image</h2>
-        <img id="rover-image" src="" alt="Mars Rover Image">
-        <p id="rover-date"></p>
-    </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -120,8 +116,7 @@
             const dateElement = document.getElementById('date');
             const imageElement = document.getElementById('apod-image');
             const explanationElement = document.getElementById('explanation');
-	    const roverImageElement = document.getElementById('rover-image');
-            const roverDateElement = document.getElementById('rover-date');
+
 	// Fetch nasa image of the day
             fetch('https://api.nasa.gov/planetary/apod?api_key=YQGjjwqOQVtmLK6HaMn0QVy1s2eUXAdgheMOYymw')
                 .then(response => response.json())
@@ -135,18 +130,7 @@
                 .catch(error => {
                     console.error('Error fetching data:', error);
                 });
-	// Fetch Mars rover photos
-	fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=latest_date&camera=mast&api_key=YQGjjwqOQVtmLK6HaMn0QVy1s2eUXAdgheMOYymw')
-                .then(response => response.json())
-                .then(data => {
-                    const latestImage = data.latest_photos[0];
-                    roverImageElement.src = latestImage.img_src;
-                    roverImageElement.alt = 'Mars Rover Image';
-                    roverDateElement.textContent = `Earth Date: ${latestImage.earth_date}`;
-                })
-                .catch(error => {
-                    console.error('Error fetching Mars Rover image:', error);
-                });
+
         });
     </script>
 </body>
