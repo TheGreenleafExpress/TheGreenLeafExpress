@@ -116,6 +116,8 @@
             const dateElement = document.getElementById('date');
             const imageElement = document.getElementById('apod-image');
             const explanationElement = document.getElementById('explanation');
+	    const roverImageElement = document.getElementById('rover-image');
+            const roverDateElement = document.getElementById('rover-date');
 	// Fetch nasa image of the day
             fetch('https://api.nasa.gov/planetary/apod?api_key=YQGjjwqOQVtmLK6HaMn0QVy1s2eUXAdgheMOYymw')
                 .then(response => response.json())
