@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NASA Image of the Day</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .apod-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .apod-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .apod-container p {
+            margin: 0 0 15px;
+            text-align: center;
+        }
+
+        .apod-container img {
+            max-width: 100%;
+            display: block;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NASA Image of the Day</h1>
+    </header>
+    <div class="apod-container">
+        <h2 id="title"></h2>
+        <p id="date"></p>
+        <img id="apod-image" src="" alt="NASA APOD">
+        <p id="explanation"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const titleElement = document.getElementById('title');
+            const dateElement = document.getElementById('date');
+            const imageElement = document.getElementById('apod-image');
+            const explanationElement = document.getElementById('explanation');
+
+            fetch('https://api.nasa.gov/planetary/apod?api_key=YQGjjwqOQVtmLK6HaMn0QVy1s2eUXAdgheMOYymw')
+                .then(response => response.json())
+                .then(data => {
+                    titleElement.textContent = data.title;
+                    dateElement.textContent = `Date: ${data.date}`;
+                    imageElement.src = data.url;
+                    imageElement.alt = data.title;
+                    explanationElement.textContent = data.explanation;
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    </script>
+</body>
+</html>
