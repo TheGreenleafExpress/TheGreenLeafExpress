@@ -6,9 +6,12 @@
 <br>
 <a href="https://TheGreenLeafExpress.github.io">The Green Leaf Express</a>
 <br>
+<br>
   <a href="https://github.com/TheGreenLeafExpress/TheGreenLeafExpress.github.io/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/TheGreenLeafExpress/TheGreenLeafExpress.github.io">
   </a>
+
+  <p>if you go to the calculator then press 1234 and enter you can enter the secret section</p>
   
 
 
