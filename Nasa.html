@@ -51,12 +51,52 @@
             border-radius: 6px;
             margin-bottom: 15px;
         }
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #eee;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h1>NASA Image of the Day</h1>
     </header>
+    
+	</style> 
+	
+	
+    <nav>
+        <ul>
+            <li><a href="index.html">Technology</a></li>
+            <li><a href="generalNews.html">General</a></li>
+            <li><a href="business.html">Business</a></li>
+
+            <li><a href="Calculator.html">Calculator</a></li>
+            <!-- You can add more categories here -->
+        </ul>
+    </nav>
     <div class="apod-container">
         <h2 id="title"></h2>
         <p id="date"></p>
