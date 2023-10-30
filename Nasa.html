@@ -136,7 +136,7 @@
                     console.error('Error fetching data:', error);
                 });
 	// Fetch Mars rover photos
-	fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=latest_date&camera=mast&api_key=DEMO_KEY')
+	fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=latest_date&camera=mast&api_key=YQGjjwqOQVtmLK6HaMn0QVy1s2eUXAdgheMOYymw')
                 .then(response => response.json())
                 .then(data => {
                     const latestImage = data.latest_photos[0];
