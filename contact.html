@@ -116,8 +116,13 @@
         <input type="email" id="email" name="email"><br><br>
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="5"></textarea><br><br>
-        <button type="Submit">Submit</button>
+        <button type="Submit" onclick="refresh">Submit</button>
       </form>
     </main>
   </body>
+  <script>
+    function refresh(){
+      location.reload()
+    }
+  </script>
 </html>
