@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/github/contributors/TheGreenLeafExpress/TheGreenLeafExpress.github.io">
   </a>
 
-  <p>if you go to the calculator then press 1234 and enter you can enter the secret section</p>
+  <p>if you go to the calculator then press 420 and enter you can enter the secret section</p>
   
 
 
