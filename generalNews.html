@@ -4,6 +4,9 @@
     <link rel="icon" type="image/x-icon" href="/images/image-removebg-preview.png">
 
     <meta charset="UTF-8">
+    <meta name="description" content="Tech news">
+    <meta name="keywords" content="News,tech,general,buisness">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tech News</title>
     <style>
         body {
@@ -157,6 +160,7 @@
                         const image = document.createElement('img');
                         image.src = article.urlToImage;
                         image.alt = article.title;
+                        image.loading = "lazy"
 
                         articleDiv.appendChild(title);
                         articleDiv.appendChild(description);
