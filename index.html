@@ -156,6 +156,7 @@
                         const image = document.createElement('img');
                         image.src = article.urlToImage;
                         image.alt = article.title;
+                        image.loading = "lazy"
 
                         articleDiv.appendChild(title);
                         articleDiv.appendChild(description);
