@@ -128,56 +128,21 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const articlesContainer = document.querySelector('.news-container');
-
-            fetch('https://saurav.tech/NewsAPI/top-headlines/category/business/us.json')
-                .then(response => response.json())
-                .then(data => {
-                    data.articles.forEach(article => {
-                        const articleDiv = document.createElement('div');
-                        articleDiv.classList.add('article');
-
-                        const title = document.createElement('h2');
-                        title.textContent = article.title;
-
-                        const description = document.createElement('p');
-                        description.textContent = article.description;
-
-                        const source = document.createElement('p');
-                        source.classList.add('source');
-                        source.textContent = `Source: ${article.source.name}`;
-
-                        const publishedAt = document.createElement('p');
-                        publishedAt.classList.add('published');
-                        const publishedDate = new Date(article.publishedAt);
-                        publishedAt.textContent = `Published at: ${publishedDate.toDateString()}`;
-
-                        const articleLink = document.createElement('a');
-                        articleLink.href = article.url;
-                        articleLink.textContent = 'Read more';
-                        articleLink.target = '_blank';
-
-                        const image = document.createElement('img');
-                        image.src = article.urlToImage;
-                        image.alt = article.title;
-                        image.loading = "lazy"
-
-                        articleDiv.appendChild(title);
-                        articleDiv.appendChild(description);
-                        articleDiv.appendChild(source);
-                        articleDiv.appendChild(publishedAt);
-                        articleDiv.appendChild(image);
-                        articleDiv.appendChild(articleLink);
-
-                        articlesContainer.appendChild(articleDiv);
-                    });
-                })
-                .catch(error => {
-                    console.log("damn something bad happened");
-                    
-                });
-        });
+        function getStockData() {
+            const apiKey = 'cngdmc1r01qq9hn8ub90cngdmc1r01qq9hn8ub9g';
+            const symbol = 'AMZN'; 
+            fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
+            .then(response => response.json())
+            .then(data => {     
+                const stockDataElement = document.getElementById('stockData');
+                stockDataElement.innerHTML = `
+                    <p> $${data.c}</p>`;
+            })
+            .catch(error => {
+                console.error('ur gay', error);
+            });
+        }
+        window.onload = getStockData;
     </script>
 </body>
 </html>
