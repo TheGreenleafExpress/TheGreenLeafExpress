@@ -53,60 +53,11 @@
         nav ul li a:hover {
             color: #fff;
         }
-
-        .news-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .article {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .article h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .article p {
-            margin: 0 0 10px;
-        }
-
-        .article p.source {
-            color: #666;
-        }
-
-        .article p.published {
-            font-size: 0.8em;
-            color: #888;
-        }
-
-        .article a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-            align-self: flex-end;
-        }
-
-        .article img {
-            max-width: 100%;
-            border-radius: 6px;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
+    <header>
+        <h1>Stock Data</h1>
+    </header>
 <nav>
         <ul>
             <li><a href="index.html">Technology</a></li>
@@ -122,30 +73,37 @@
     </nav>
 
 <body>
-    <input type="text" id="symbolInput" placeholder="Enter Stock Symbol">
+    <input type="text" id="symbolInput" placeholder="Enter Stock Symbol (e.g., AAPL)">
     <div id="stockPrice"></div>
 
-    <script>
-
+     <script>
         function getStockPrice() {
             const apiKey = 'cngdmc1r01qq9hn8ub90cngdmc1r01qq9hn8ub9g';
             const symbol = document.getElementById('symbolInput').value.toUpperCase(); 
+            const stockPriceElement = document.getElementById('stockPrice');
+
+            if (symbol === 'TGLE') {
+                stockPriceElement.textContent = `TGLE: $781928379819467182763.98`;
+                return;
+            }
+
             if (symbol.length >= 4) {
                 fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
                 .then(response => response.json())
                 .then(data => {
-                    const stockPriceElement = document.getElementById('stockPrice');
                     if (data.c) {
                         stockPriceElement.textContent = `${symbol}: $${data.c}`;
-                    }else {
-                        stockPriceElement.textContent = `ur gay`;
+                    } else {
+                        stockPriceElement.textContent = `Failed to fetch stock price for ${symbol}`;
                     }
                 })
                 .catch(error => {
-                    console.error('ur gay', error);
+                    console.error('Error fetching stock price:', error);
+                    stockPriceElement.textContent = `Failed to fetch stock price for ${symbol}`;
                 });
             }
         }
+
         document.getElementById('symbolInput').addEventListener('input', getStockPrice);
     </script>
 </body>
