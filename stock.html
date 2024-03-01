@@ -1,0 +1,28 @@
+<body>
+    <input type="text" id="symbolInput" placeholder="Enter Stock Symbol (e.g., AAPL)">
+    <div id="stockPrice"></div>
+
+    <script>
+
+        function getStockPrice() {
+            const apiKey = 'cngdmc1r01qq9hn8ub90cngdmc1r01qq9hn8ub9g';
+            const symbol = document.getElementById('symbolInput').value.toUpperCase(); 
+            if (symbol.length >= 4) {
+                fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const stockPriceElement = document.getElementById('stockPrice');
+                    if (data.c) {
+                        stockPriceElement.textContent = `${symbol}: $${data.c}`;
+                    }else {
+                        stockPriceElement.textContent = `ur gay`;
+                    }
+                })
+                .catch(error => {
+                    console.error('ur gay', error);
+                });
+            }
+        }
+        document.getElementById('symbolInput').addEventListener('input', getStockPrice);
+    </script>
+</body>
