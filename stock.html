@@ -1,4 +1,113 @@
-    <nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/image-removebg-preview.png">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Buisness news">
+    <meta name="keywords" content="News,tech,general,buisness">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #eee;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+
+        .news-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .article p {
+            margin: 0 0 10px;
+        }
+
+        .article p.source {
+            color: #666;
+        }
+
+        .article p.published {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            align-self: flex-end;
+        }
+
+        .article img {
+            max-width: 100%;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<nav>
         <ul>
             <li><a href="index.html">Technology</a></li>
             <li><a href="generalNews.html">General</a></li>
